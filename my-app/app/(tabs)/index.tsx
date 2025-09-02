@@ -8,8 +8,11 @@ import { ThemedView } from '@/components/ThemedView';
 
 import { View, Text, TextInput, TouchableOpacity, Alert } from 'react-native';
 import { useState } from 'react';
+import { useNavigation } from '@react-navigation/native';
+import App from '../App';
 
 export default function HomeScreen() {
+  const navigation = useNavigation();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -29,7 +32,7 @@ export default function HomeScreen() {
     <>
     <View style={styles.container}>
       <Text style={styles.title}>
-        ChegaVaga
+        ChegaVaga 🚗
       </Text>
 
       <Text style={styles.subtitle}>
@@ -61,9 +64,11 @@ export default function HomeScreen() {
       <TouchableOpacity style={styles.button} onPress={handleLogin}>
         <Text style={styles.buttonText}>Entrar</Text>
       </TouchableOpacity>
-
       {/* Criar Conta */}
-      <TouchableOpacity style={styles.linkButton} onPress={handleRegister}>
+      <TouchableOpacity
+        style={styles.linkButton}
+        onPress={() => navigation.navigate('Register' as never)}
+      >
         <Text style={styles.linkText}>Não tem conta? Criar agora</Text>
       </TouchableOpacity>
 
